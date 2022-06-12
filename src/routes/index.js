@@ -14,60 +14,23 @@ router.post('/send-email' , (req, res) => {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>email</title>
+        <title>test email</title>
         <style>
             body{
-                background-color: #E4E9F7;
+                font-family: Arial, Helvetica, sans-serif;
             }
-            h1,
-            h2,
-            h3 {
-                text-align: left;
-                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            .prof{
+                font-weight: 550;
             }
-    
-            h2 {
-                font-size: 1.2em;
-            }   
-    
-            h3{
-                font-size: 1em;
-                margin: 0;
-                color: #aaa;
-            }
-    
-            h1 span{
-                color: #695CFE;
-            }
-            p {
-                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            }
-            .email-container{
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh
-            }
-            .email-content{
-                background-color: #fff;
-                border-radius: 5px;
-                padding: 1em;
-                max-width: 500px;
-            }
-          </style>
+        </style>
     </head>
     <body>
-        <section class="email-container">
-            <div class="email-content">
-                <h1 class="email-title">¡Hola <span>${name}</span> gracias por tu mensaje!</h1>
-                <p>Actualmente mi tiempo estimado de respuesta es de 24hs hábiles. <br>
-                    Pero claro si puedo te contestaré antes :)</p>
-                <h2>Saludos atte.</h2>
-                <h3>Mauricio Fernandez</h3>
-                <h3>Full Stack Developer</h3>
-            </div>
-        </section>
+        <div>
+            <p>¡Hola <span>${name}</span> gracias por tu mensaje! <span style='font-size:17px;'>&#128588;</span></p> 
+            <p>Recibiras mi respuesta pronto!</p>
+            <p>¡Saludos! <span style='font-size:17px;'>&#128640;</span></p>
+            <p class="prof">Mauricio Fernandez <br> Software Developer</p>
+        </div>
     </body>
     </html>
     `;
@@ -140,10 +103,11 @@ router.post('/send-email' , (req, res) => {
     const CLIENT_ID = "644455366502-tlf4nn0scmv2edj0n7lnuil2ko9egu79.apps.googleusercontent.com";
     const CLIENT_SECRET = "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";
     const CLIENT_REDIRECT_URI = "https://developers.google.com/oauthplayground";
-    const REFRESH_TOKEN = "1//04e25MFIw2kJ7CgYIARAAGAQSNwF-L9IrG5Qb7dSnYm1Jrh7cvTvkkoeFZppYQweKq_hnEvSdSgVdJcE7NvdczwpTA2XvIqc_PGc";
+    const REFRESH_TOKEN = "1//04XjxNUaOgv5aCgYIARAAGAQSNwF-L9Ir5PMDowZoKnIAzOGKziUGCwzx88jJc0M-iFN8XPkqIdIgAMoUl0bli3jLihkccdFIfY4";
     const oAuth2Client = new google.auth.OAuth2(CLIENT_ID,CLIENT_SECRET,CLIENT_REDIRECT_URI);
     oAuth2Client.setCredentials({
         refresh_token : REFRESH_TOKEN
+        
     });
 
     async function sendEmail(email, contentHTML)
@@ -164,7 +128,7 @@ router.post('/send-email' , (req, res) => {
             const mailOptions = {
                 from: "Mauricio Fernandez Developer <maufernadezdev>",
                 to: email,
-                subject:"Mauricio Fernandez sitio web",
+                subject:"Mauricio Fernandez sitio web 🤓",
                 html: contentHTML
             };
 
